@@ -3,56 +3,28 @@ import Constants
 from Constants import consts
 
 class GenericBot:
-    distSingleLittle = consts.distSingleLittle
-    distDoubleLittle = consts.distDoubleLittle
-    distTripleLittle = consts.distTripleLittle
-    distSingleLarge = consts.distSingleLarge
-    distDoubleLarge = consts.distDoubleLarge
-    distCluster = consts.distCluster
-    distLowBird = consts.distLowBird
-    distMidBird = consts.distMidBird
-    distHighBird = consts.distHighBird
     distMisc = consts.distMisc
     fitness = 0
 
     def __init__(self):
-        distSingleLittle += random.randint(consts.initLowRange, consts.initHighRange)
-        distDoubleLittle += random.randint(consts.initLowRange, consts.initHighRange)
-        distTripleLittle += random.randint(consts.initLowRange, consts.initHighRange)
-        distSingleLarge += random.randint(consts.initLowRange, consts.initHighRange)
-        distDoubleLarge += random.randint(consts.initLowRange, consts.initHighRange)
-        distCluster += random.randint(consts.initLowRange, consts.initHighRange)
-        distLowBird += random.randint(consts.initLowRange, consts.initHighRange)
-        distMidBird += random.randint(consts.initLowRange, consts.initHighRange)
-        distHighBird += random.randint(consts.initLowRange, consts.initHighRange)
-        distMisc += random.randint(consts.initLowRange, consts.initHighRange)
+        self.distMisc += random.randint(consts.initLowRange, consts.initHighRange)
 
     def mutate(self):
-        distSingleLittle += round(random.random(), 1)
-        distDoubleLittle += round(random.random(), 1)
-        distTripleLittle += round(random.random(), 1)
-        distSingleLarge += round(random.random(), 1)
-        distDoubleLarge += round(random.random(), 1)
-        distCluster += round(random.random(), 1)
-        distLowBird += round(random.random(), 1)
-        distMidBird += round(random.random(), 1)
-        distHighBird += round(random.random(), 1)
-        distMisc += round(random.random(), 1)
+        self.distMisc += round(random.random(), 1)
 
     def printStats(self):
-        print("duckJumpPause = " )
+        print("distMisc = " + str(self.distMisc))
 
-    def think(self, dist, type):
+    def think(self, yLvl):
         raise NotImplementedError
 
 class basicBot(GenericBot):
-    def think(self, dist, type):
-        if dist <= self.distSingleLittle:
-            return 1
-        return 0
+    def think(self, yLvl):
+        pass
 
 class geneticBot(GenericBot):
-    def think(self, dist, type):
-        if dist <= self.distSingleLittle:
-            return 1
-        return 0
+    def think(self, yLvl):
+        if yLvl == 0: return 0 #No obs found
+        elif yLvl == 1: return 1 #Low obstacle found, jump
+        elif yLvl == 2: return 2 #mid obstacle found, duck
+        else: return 0 #high obstacle found. ignore

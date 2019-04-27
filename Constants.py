@@ -3,9 +3,10 @@ class consts:
     fullGameCoords = [0,300,1920,750]
     gameCoords = [0, 430, 1920, 680]
     scoreCoords = [1700, 300, 1900, 350]
+    dinoX = 140
 
     #Setup settings
-    collisonBuffer = 5
+    collisonBuffer = 10
     populationSize = 50
     numGenerations = 100
     initLowRange = -40
