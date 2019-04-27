@@ -1,12 +1,12 @@
 class consts:
     #Picture crop settings
     fullGameCoords = [0,300,1920,750]
-    gameCoords = [0, 430, 1920, 680]
+    gameCoords = [0, 430, 1920, 650]
     scoreCoords = [1700, 300, 1900, 350]
     dinoX = 140
 
     #Setup settings
-    collisonBuffer = 10
+    collisonBuffer = 0
     populationSize = 50
     numGenerations = 100
     initLowRange = -40
